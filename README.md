@@ -1,20 +1,43 @@
 # Living Story
 
-Living Story is a prompt-first workflow for keeping a daily, evidence-based
-picture of active projects.
+Living Story is a prompt-first workflow for giving agents a durable,
+evidence-based understanding of a person and the work around them.
 
-It turns repo activity into a durable project memory:
+It keeps more than project status. It maintains the context agents usually lose
+between sessions:
 
+- what someone is building
+- what they care about
+- what their goals are
+- what motivates them
+- what counts as real progress
+- which projects are moving, stalled, shipped, or unresolved
+
+The result is a living operating picture that agents can read before helping.
+Instead of starting every session from scattered repo activity and stale memory,
+an agent gets a current story of the work, the person behind it, and the next
+things that actually deserve attention.
+
+## Why It Matters
+
+Most agent workflows are task-scoped. They can inspect a repo, answer a prompt,
+or finish a ticket, but they rarely understand the broader arc: why this work
+matters, what the person is trying to become, which commitments are real, and
+where attention is getting fragmented.
+
+Living Story turns that broader context into a small markdown system:
+
+- one `about-me.md` for personal operating context
+- one `goals.md` for targets, dates, and motivation
 - one markdown file per project
 - one synthesized `STORY.md`
 - one history snapshot per run
 - one changelog line per update
-- verification rules that prevent wins and open threads from drifting away from
-  evidence
+- verification rules that keep wins and open threads tied to evidence
 
-The point is not to summarize commits. The point is to keep an honest operating
-picture of what is moving, what is stalled, what shipped, and what still needs
-attention.
+The point is not to summarize commits. The point is to keep an honest,
+inspectable narrative of what is moving, what is stalled, what shipped, what is
+at stake, and what should happen next.
 
 ## Use
 
@@ -36,7 +59,7 @@ story/
     example-project.md
 ```
 
-Run it once per day, or whenever you want a refreshed project picture.
+Run it once per day, or whenever you want a refreshed operating picture.
 
 ## What It Checks
 
@@ -45,6 +68,7 @@ Living Story asks the agent to:
 - discover configured repository roots
 - scan each git repository for recent activity
 - update per-project state files
+- read personal context and goals
 - carry open threads forward from the previous story
 - verify recent wins against real evidence
 - snapshot the finished story
@@ -65,6 +89,7 @@ the agent must relabel it or keep it under review.
 
 ## Design Principles
 
+- Personal context is part of the work context.
 - Evidence over vibes.
 - Markdown over hidden state.
 - Project files before global synthesis.
